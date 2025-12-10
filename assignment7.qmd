@@ -73,3 +73,32 @@ Calculating means with summarise grouped by spiecies and traits.
 
 View(iris_mean)
 ```` ``` ````
+
+### Task 2.2
+
+What is the largest and widest,  petal and sepal,  of virginica and versicolor species?
+
+#### Solution
+
+Separating Trait to get to maximums of specific pairs of Part and Measure.
+Then filtering to be left with the important species and finding the maximums from group of specific combinations of Spiecies, Part and Measure.
+
+````{r}```
+#Separating Trait (ex. Petal.Length) into Part (Petal) and Measure (Lenght)
+iris_long_sep <- iris_long %>%
+  #Separating by "." written as "\\." to avoid its regular expresion interpretation as "any character"
+  separate(Trait, into = c("Part", "Measure"), sep = "\\.")
+```` ``` ````
+````{r}```
+#Filtering to narrow the table to Virginica and Veesicolor spiecies
+iris_max <- iris_long_sep %>%
+  filter(Species %in% c("virginica", "versicolor")) %>%
+  group_by(Species, Part, Measure) %>%
+  #Finding the maximums
+  summarise(MaxSize = max(Size)) %>%
+  #Sorting
+  arrange(Species, Part, Measure)
+
+View(iris_max)
+```` ``` ````
+
