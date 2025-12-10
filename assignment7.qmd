@@ -102,3 +102,30 @@ iris_max <- iris_long_sep %>%
 View(iris_max)
 ```` ``` ````
 
+### Task 2.3
+
+For each species, for sepal and petal width and length, how many observations are above the mean?
+- tip: adding the means as column might help
+
+#### Solution
+
+First the mean must have been calculated.
+Later it needed to be connected to every specific combination of Solution, Part and Measure.
+I did it using left join, joining by every combination.
+When that was done every Size coud have been compared to a mean and filtered. 
+
+````{r}```
+#Transforming the table to show means
+ iris_mean_group <- iris_long_sep  %>% 
+  #Grouping by spiecies and traits
+  group_by(Species, Part, Measure) %>% 
+  #Calculating the means
+  summarise(Mean_of_size = mean(Size)) 
+```` ``` ````
+````{r}```
+iris_joined <- iris_long_sep %>%
+  left_join(y = iris_mean_group, by = c("Species", "Part", "Measure")) %>%
+  filter(Size > Mean_of_size)
+
+View(iris_joined)
+```` ``` ````
