@@ -83,7 +83,8 @@ What is the largest and widest,  petal and sepal,  of virginica and versicolor s
 #### Solution
 
 Separating Trait to get to maximums of specific pairs of Part and Measure.
-Then filtering to be left with the important species and finding the maximums from group of specific combinations of Spiecies, Part and Measure.
+Then filtering to leave out unwanted species. 
+Finally finding the maximums from groups of specific combinations of Spiecies, Part and Measure.
 
 ```{r}
 #Separating Trait (ex. Petal.Length) into Part (Petal) and Measure (Lenght)
