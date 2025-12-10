@@ -12,7 +12,7 @@ execute:
 
 # Assignment 7
 
-Use tidyr and dplyr libraries whenever possible, to do the following:
+Use `tidyr` and `dplyr` libraries whenever possible, to do the following:
 
 ```{r}
 #Adding the tidyr and dplyr libraries
@@ -59,7 +59,7 @@ What is the mean length and width of the sepal and petal of each species?
 
 #### Solution
 
-Calculating means with summarise grouped by spiecies and traits.
+Calculating means with `summarise` grouped by species and traits.
 
 ```{r}
 #Transforming the table to show means
@@ -111,7 +111,7 @@ For each species, for sepal and petal width and length, how many observations ar
 
 At the beginning it was necessary to calculate the average.
 Then it needed to be connected to every specific combination of Solution, Part and Measure.
-I did it using left join, joining by every combination.
+I did it using `left join`, joining by every combination.
 When that was done, it was possible to compare Size with Mean and filter the rows according to it. 
 
 ```{r}
