@@ -1,0 +1,13 @@
+---
+title: "Assignment 7"
+author:
+  name: Natalia
+  date: 12.10.2025
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+
