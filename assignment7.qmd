@@ -10,4 +10,38 @@ execute:
   message: false
 ---
 
+# Assignment 7
 
+Use tidyr and dplyr libraries whenever possible, to do the following:
+
+````{r}```
+#Adding the tidyr and dplyr libraries
+library(tidyr)
+library(dplyr)
+```` ``` ````
+
+## Task 1
+
+### Instructions
+
+Load the “iris” dataset and transform it to longer.
+- tip: you should get 3 columns Species | Trait | Size
+
+### Solution
+
+Using `pivot_longer()`.
+
+````{r}```
+#Transforming the built-in "iris" dataset to longer
+iris_long <- iris %>%
+  pivot_longer(
+    #Choosing the columns
+    cols = c(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width),
+    #Setting the names of the new columns
+    names_to = "Trait",
+    values_to = "Size"
+   )
+
+#Preview of the first few rows
+head(iris_long)
+```` ``` ````
