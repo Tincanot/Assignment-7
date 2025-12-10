@@ -22,12 +22,12 @@ library(dplyr)
 
 ## Task 1
 
-### Instructions
+#### Instructions
 
 Load the “iris” dataset and transform it to longer.
 - tip: you should get 3 columns Species | Trait | Size
 
-### Solution
+#### Solution
 
 Using `pivot_longer()`.
 
@@ -44,4 +44,32 @@ iris_long <- iris %>%
 
 #Preview of the first few rows
 head(iris_long)
+```` ``` ````
+
+## Task 2
+
+#### Instructions 
+
+Answer the following questions.
+- tip: you can answer each question “piping” only 2-3 commands
+
+### Task 2.1
+
+What is the mean length and width of the sepal and petal of each species?
+
+#### Solution
+
+Calculating means with summarise grouped by spiecies and traits.
+
+````{r}```
+#Transforming the table to show means
+ iris_mean <- iris_long  %>% 
+  #Grouping by spiecies and traits
+  group_by(Species, Trait) %>% 
+  #Calculating the means
+  summarise(Mean_of_size = mean(Size)) %>% 
+  #Sorting
+  arrange(Species, Trait)
+
+View(iris_mean)
 ```` ``` ````
