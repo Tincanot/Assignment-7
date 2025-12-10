@@ -14,11 +14,11 @@ execute:
 
 Use tidyr and dplyr libraries whenever possible, to do the following:
 
-````{r}```
+```{r}
 #Adding the tidyr and dplyr libraries
 library(tidyr)
 library(dplyr)
-```` ``` ````
+``` 
 
 ## Task 1
 
@@ -31,7 +31,7 @@ Load the “iris” dataset and transform it to longer.
 
 Using `pivot_longer()`.
 
-````{r}```
+```{r}
 #Transforming the built-in "iris" dataset to longer
 iris_long <- iris %>%
   pivot_longer(
@@ -44,7 +44,7 @@ iris_long <- iris %>%
 
 #Preview of the first few rows
 head(iris_long)
-```` ``` ````
+```
 
 ## Task 2
 
@@ -61,7 +61,7 @@ What is the mean length and width of the sepal and petal of each species?
 
 Calculating means with summarise grouped by spiecies and traits.
 
-````{r}```
+```{r}
 #Transforming the table to show means
  iris_mean <- iris_long  %>% 
   #Grouping by spiecies and traits
@@ -72,7 +72,7 @@ Calculating means with summarise grouped by spiecies and traits.
   arrange(Species, Trait)
 
 View(iris_mean)
-```` ``` ````
+```
 
 ### Task 2.2
 
@@ -83,13 +83,13 @@ What is the largest and widest,  petal and sepal,  of virginica and versicolor s
 Separating Trait to get to maximums of specific pairs of Part and Measure.
 Then filtering to be left with the important species and finding the maximums from group of specific combinations of Spiecies, Part and Measure.
 
-````{r}```
+```{r}
 #Separating Trait (ex. Petal.Length) into Part (Petal) and Measure (Lenght)
 iris_long_sep <- iris_long %>%
   #Separating by "." written as "\\." to avoid its regular expresion interpretation as "any character"
   separate(Trait, into = c("Part", "Measure"), sep = "\\.")
-```` ``` ````
-````{r}```
+```
+```{r}
 #Filtering to narrow the table to Virginica and Veesicolor spiecies
 iris_max <- iris_long_sep %>%
   filter(Species %in% c("virginica", "versicolor")) %>%
@@ -100,7 +100,7 @@ iris_max <- iris_long_sep %>%
   arrange(Species, Part, Measure)
 
 View(iris_max)
-```` ``` ````
+```
 
 ### Task 2.3
 
@@ -114,18 +114,18 @@ Then it needed to be connected to every specific combination of Solution, Part a
 I did it using left join, joining by every combination.
 When that was done, it was possible to compare Size with Mean and filter the rows according to it. 
 
-````{r}```
+```{r}
 #Transforming the table to show means
  iris_mean_group <- iris_long_sep  %>% 
   #Grouping by spiecies and traits
   group_by(Species, Part, Measure) %>% 
   #Calculating the means
   summarise(Mean_of_size = mean(Size)) 
-```` ``` ````
-````{r}```
+```
+```{r}
 iris_joined <- iris_long_sep %>%
   left_join(y = iris_mean_group, by = c("Species", "Part", "Measure")) %>%
   filter(Size > Mean_of_size)
 
 View(iris_joined)
-```` ``` ````
+```
