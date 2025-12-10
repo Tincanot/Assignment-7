@@ -25,6 +25,7 @@ library(dplyr)
 #### Instructions
 
 Load the “iris” dataset and transform it to longer.
+
 - tip: you should get 3 columns Species | Trait | Size
 
 #### Solution
@@ -51,6 +52,7 @@ head(iris_long)
 #### Instructions 
 
 Answer the following questions.
+
 - tip: you can answer each question “piping” only 2-3 commands
 
 ### Task 2.1
@@ -105,6 +107,7 @@ View(iris_max)
 ### Task 2.3
 
 For each species, for sepal and petal width and length, how many observations are above the mean?
+
 - tip: adding the means as column might help
 
 #### Solution
