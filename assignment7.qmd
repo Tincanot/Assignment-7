@@ -127,8 +127,10 @@ When that was done, it was possible to compare Size with Mean and filter the row
   summarise(Mean_of_size = mean(Size)) 
 ```
 ```{r}
+#joining the tables by Spiecies, Part and Measure
 iris_joined <- iris_long_sep %>%
   left_join(y = iris_mean_group, by = c("Species", "Part", "Measure")) %>%
+  #filtering according to comparisons od Size and means
   filter(Size > Mean_of_size)
 
 View(iris_joined)
